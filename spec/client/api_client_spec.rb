@@ -82,6 +82,24 @@ RSpec.describe ApiClient do
         }.to_json
       }
 
+      let(:data) {
+        {
+          "payer": {
+            "document_number": "111.321.322-09",
+            "name": "Lucas B.",
+          },
+          "additional_info": {
+            "chave": "valor",
+          },
+          "charge": {
+            "amount": 10.50,
+            "pix_account_id": 1,
+            "expire_at": "2023-12-02T10:03:56-03:00",
+            "message": "Hello word",
+          },
+        }
+      }
+
       before do
         stub_request(:post, url)
           .with(body: data.to_json, headers: request_headers)
